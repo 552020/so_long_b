@@ -23,10 +23,10 @@ INCLUDES = -I./include -I./MLX42/include
 GREEN   = \033[32;1m
 RESET	= \033[0m
 MLX42_DIR = ./MLX42
-SRC_DIR = srcs/
+SRC_DIR = src/
 OBJ_DIR = objs/
 
-SRCS =	main.c utils.c initialization.c map_functions.c map_check.c \
+SRCS =	so_long.c utils.c initialization.c map_functions.c map_check.c \
 		map_utils.c flood_fill.c load_images.c load_images2.c render.c \
 		move_functions.c move_functions2.c enemy_patrol.c screen_string.c \
 		load_player_images.c move_functions_core.c
