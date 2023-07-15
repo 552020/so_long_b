@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <slombard@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:36:22 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 13:40:43 by bsengeze         ###   ########.fr       */
+/*   Created: 2023/07/15 12:29:24 by slombard          #+#    #+#             */
+/*   Updated: 2023/07/15 12:42:00 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	include "../include/so_long.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_game	*game;
-	t_img	*images;
 
-	if (ac != 2)
-		write_error("Argument count should be 2!");
-	check_file_extension(av[1]);
-	game = init_game(av[1]);
+	//TODO: create a macro for the error message
+	if (argc != 2)
+		exit_with_error("To play the game run ./so_long with some .ber map file!", false);
+	check_file_extension(argv[1]);
+	game = init_game(argv[1]);
 	game->mlx = mlx_init(game->width * PIXELS,
 			game->height * PIXELS, "so_long", true);
 	if (!game->mlx)
 		return (EXIT_FAILURE);
-	images = init_img_struct(game->mlx);
-	game->img = images;
+	game->img = init_img_struct(game->mlx);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	fill_background(game);
 	render_map(game);

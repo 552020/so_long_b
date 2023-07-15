@@ -15,7 +15,7 @@
 void	empty_map(char *map)
 {
 	if (!map[0])
-		write_error("Empty map!");
+		exit_with_error("The map is empty!", false);
 }
 
 void	empty_lines(char *map)
@@ -26,7 +26,7 @@ void	empty_lines(char *map)
 	while (map[i])
 	{
 		if (map[0] == '\n' || (map[i] == '\n' && map[i + 1] == '\n'))
-			write_error("Empty line in map!");
+			exit_with_error("Empty line in map!", false);
 		i++;
 	}
 }
@@ -45,7 +45,7 @@ void	wrong_content(char *map)
 	while (map[i])
 	{
 		if (!(ft_strchr("PECX01\n", map[i])))
-			write_error("Invalid characters in map!");
+			exit_with_error("Invalid characters in the map file!", false);
 		if (map[i] == 'P')
 			player++;
 		if (map[i] == 'C')
@@ -55,7 +55,7 @@ void	wrong_content(char *map)
 		i++;
 	}
 	if (player != 1 || exit != 1 || collectibles < 1)
-		write_error("Invalid map!");
+		exit_with_error("Invalid map! The map contains more than 1 player or more than 1 exit or no collectibles at all!", false);
 }
 
 void	wrong_shape(char *map)
@@ -77,7 +77,7 @@ void	wrong_shape(char *map)
 		if (len == 0)
 			len = curr_line_len;
 		else if (curr_line_len != len)
-			write_error("Wrong map shape!");
+			exit_with_error("Invalid map! The map is not rectangular!", false);
 		curr_line_len = 0;
 		if (map[i] == '\n')
 			i++;

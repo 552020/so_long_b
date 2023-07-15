@@ -35,7 +35,7 @@ t_game	*init_game_struct(char **map_arr)
 
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
-		write_error("Memory allocation error!");
+		exit_with_error("Memory allocation error!", true);
 	game->width = ft_strlen(map_arr[0]);
 	game->height = count_rows(map_arr);
 	game->map_grid = map_arr;

@@ -60,7 +60,7 @@ void	wall_check_horizontal(char *map)
 		while (map[i] != '\n' && map[i] != '\0')
 		{
 			if (map[i] != '1')
-				write_error("Wrong wall content!");
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i++;
 			width++;
 		}
@@ -68,7 +68,7 @@ void	wall_check_horizontal(char *map)
 		while (map[i] != '\0')
 		{
 			if (map[i] != '1')
-				write_error("Wrong wall content!");
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i++;
 		}
 	}
@@ -94,7 +94,7 @@ void	wall_check_vertical(char *map)
 		while (i < map_len - width -1)
 		{
 			if (map[i] != '1' || map[i + width -1] != '1')
-				write_error("Wrong wall content!");
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i = i + width + 1;
 		}
 		i = i + width;

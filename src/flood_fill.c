@@ -27,7 +27,7 @@ void	flood_fill(t_game *game)
 	tmp.map_grid = (char **)malloc(tmp.height * sizeof(char *));
 	i = 0;
 	if (!tmp.map_grid)
-		write_error("Memory allocation problem");
+		exit_with_error("Memory allocation problem", true);
 	while (i < tmp.height)
 	{
 		tmp.map_grid[i] = ft_strdup(game->map_grid[i]);
@@ -35,7 +35,7 @@ void	flood_fill(t_game *game)
 	}
 	path_check(&tmp, tmp.player_y, tmp.player_x);
 	if (!(tmp.exit_x == 1 && tmp.collectibles == 0))
-		write_error("Path error!");
+		exit_with_error("Path error! The exit is not reachable by the player!", false);
 	free_grid(tmp.map_grid, tmp.height);
 }
 

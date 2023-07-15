@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   map_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:32:25 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/08 17:33:15 by bsengeze         ###   ########.fr       */
+/*   Created: 2023/07/08 17:24:01 by bsengeze          #+#    #+#             */
+/*   Updated: 2023/07/10 20:37:56 by bsengeze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "../include/so_long.h"
 
-
-void exit_with_error(const char *msg, bool is_system_error)
+void	map_check(char *map_str)
 {
-	if (is_system_error)
-		perror(msg);
-	else
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd((char *)msg, 2);
-	}
-	exit(1);
+	empty_map(map_str);
+	empty_lines(map_str);
+	wrong_content(map_str);
+	wrong_shape(map_str);
+	wrong_wall(map_str);
 }
 
-void	free_game(t_game *game)
-{
-	size_t	i;
 
-	i = 0;
-	while (i < game->height)
-	{
-		free(game->map_grid[i]);
-		i++;
-	}
-	free(game->map_grid);
-	free(game->img);
-	free(game);
+void	check_file_extension(char *file_name)
+{
+	size_t	len;
+
+	len = ft_strlen(file_name);
+	if (len < 4 || ft_strncmp(file_name + len - 4, ".ber", 4))
+		exit_with_error("The map file should be .ber file", false);
 }

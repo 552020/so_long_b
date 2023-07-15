@@ -18,6 +18,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <stdbool.h>
 
 # define PIXELS 64
 
@@ -65,11 +66,10 @@ typedef struct s_var {
 	int				index_y;
 }	t_tmp;
 
-int		main(int ac, char **av);
-
 // error functions
-
-void	write_error(char *str);
+// TODO: replace write_error with exit_with_error
+//void	write_error(char *str);
+void	exit_with_error(const char *msg, bool is_system_error);
 void	map_check(char *map_str);
 void	empty_map(char *map);
 void	empty_lines(char *map);

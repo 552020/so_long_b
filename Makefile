@@ -6,7 +6,7 @@
 #    By: slombard <slombard@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 11:03:37 by slombard          #+#    #+#              #
-#    Updated: 2023/07/15 11:54:43 by slombard         ###   ########.fr        #
+#    Updated: 2023/07/15 12:59:53 by slombard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ MLX42_DIR = ./MLX42
 SRC_DIR = src/
 OBJ_DIR = objs/
 
-SRCS =	so_long.c utils.c initialization.c map_functions.c map_check.c \
+SRCS =	so_long.c utils.c initialization.c map_functions.c check_map_1.c \
 		map_utils.c flood_fill.c load_images.c load_images2.c render.c \
 		move_functions.c move_functions2.c enemy_patrol.c screen_string.c \
-		load_player_images.c move_functions_core.c
+		load_player_images.c move_functions_core.c check_map_2.c 
 
 SRC	= $(addprefix $(SRC_DIR), $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))

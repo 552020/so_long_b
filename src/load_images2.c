@@ -18,10 +18,10 @@ t_img	*load_enemy_texture(mlx_t *mlx, t_img *img)
 
 	enemy = mlx_load_png("./sprites/Enemy.png");
 	if (!enemy)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->enemy = mlx_texture_to_image(mlx, enemy);
 	if (!img->enemy)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(enemy);
 	return (img);
 }

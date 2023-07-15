@@ -1,28 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map_functions.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:24:01 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/10 20:37:56 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// checks map for errors
-void	map_check(char *map_str)
-{
-	empty_map(map_str);
-	empty_lines(map_str);
-	wrong_content(map_str);
-	wrong_shape(map_str);
-	wrong_wall(map_str);
-}
-
-// reads map file and joins lines to a string
 char	*read_map(char *map)
 {
 	char	*line;
@@ -75,13 +53,4 @@ size_t	get_position(t_game *game, char axis, char obj)
 		y++;
 	}
 	return (0);
-}
-
-void	check_file_extension(char *file_name_str)
-{
-	size_t	len;
-
-	len = ft_strlen(file_name_str);
-	if (len < 4 || ft_strncmp(file_name_str + len - 4, ".ber", 4))
-		write_error("Map can only be a .ber file");
 }

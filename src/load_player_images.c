@@ -18,10 +18,10 @@ t_img	*load_player_texture(mlx_t *mlx, t_img *img)
 
 	player = mlx_load_png("./sprites/Player.png");
 	if (!player)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->player = mlx_texture_to_image(mlx, player);
 	if (!img->player)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player);
 	return (img);
 }
@@ -32,10 +32,10 @@ t_img	*load_player_right_texture(mlx_t *mlx, t_img *img)
 
 	player_right = mlx_load_png("./sprites/Player_Right.png");
 	if (!player_right)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->player_right = mlx_texture_to_image(mlx, player_right);
 	if (!img->player_right)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_right);
 	return (img);
 }
@@ -46,10 +46,10 @@ t_img	*load_player_left_texture(mlx_t *mlx, t_img *img)
 
 	player_left = mlx_load_png("./sprites/Player_Left.png");
 	if (!player_left)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->player_left = mlx_texture_to_image(mlx, player_left);
 	if (!img->player_left)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_left);
 	return (img);
 }
@@ -60,10 +60,10 @@ t_img	*load_player_up_texture(mlx_t *mlx, t_img *img)
 
 	player_up = mlx_load_png("./sprites/Player_Up.png");
 	if (!player_up)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->player_up = mlx_texture_to_image(mlx, player_up);
 	if (!img->player_up)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_up);
 	return (img);
 }
@@ -74,10 +74,10 @@ t_img	*load_player_down_texture(mlx_t *mlx, t_img *img)
 
 	player_down = mlx_load_png("./sprites/Player_Down.png");
 	if (!player_down)
-		write_error("Error while loading png");
+		exit_with_error("Error while loading png", false);
 	img->player_down = mlx_texture_to_image(mlx, player_down);
 	if (!img->player_down)
-		write_error("Error during texture to image");
+		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_down);
 	return (img);
 }
