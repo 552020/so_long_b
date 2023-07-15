@@ -72,7 +72,7 @@ typedef struct s_var {
 void	exit_with_error(const char *msg, bool is_system_error);
 void	check_map(char *map_str);
 void	check_if_map_is_empty(char *map);
-void	empty_lines(char *map);
+void	check_for_empty_lines(char *map);
 void	wrong_content(char *map);
 void	wrong_shape(char *map);
 void	wrong_wall(char *map);

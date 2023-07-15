@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// TODO change to absolute path
 #include "../include/so_long.h"
 
 void	check_if_map_is_empty(char *map)
@@ -18,16 +19,18 @@ void	check_if_map_is_empty(char *map)
 		exit_with_error("The map is a string, which is good. But the string is empty! No good. Load a valid map!", false);
 }
 
-void	empty_lines(char *map)
+void	check_for_empty_lines(char *map)
 {
-	size_t	i;
+	char *map_tmp;
 
-	i = 0;
-	while (map[i])
+	map_tmp = map;
+	if (*map_tmp == '\n')
+		exit_with_error("Empty line in map!", false);
+	while (*map_tmp)
 	{
-		if (map[0] == '\n' || (map[i] == '\n' && map[i + 1] == '\n'))
+		if ((*map_tmp == '\n' && *(map_tmp + 1) == '\n'))
 			exit_with_error("Empty line in map!", false);
-		i++;
+		map_tmp++;
 	}
 }
 
