@@ -14,6 +14,15 @@
 
 #include "../include/so_long.h"
 
+void	check_file_extension(char *map_file)
+{
+	char	*extension;
+
+	extension = ft_strrchr(map_file, '.');
+	if (!extension || ft_strncmp(extension, ".ber", 5) != 0)
+		exit_with_error("The map file should be .ber file", false);
+}
+
 void	map_check(char *map_str)
 {
 	empty_map(map_str);
@@ -24,11 +33,4 @@ void	map_check(char *map_str)
 }
 
 
-void	check_file_extension(char *file_name)
-{
-	size_t	len;
 
-	len = ft_strlen(file_name);
-	if (len < 4 || ft_strncmp(file_name + len - 4, ".ber", 4))
-		exit_with_error("The map file should be .ber file", false);
-}
