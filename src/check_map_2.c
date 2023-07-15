@@ -1,91 +1,102 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 16:43:09 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/08 17:13:49 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 // TODO change to absolute path
 #include "../include/so_long.h"
 
-void	check_if_map_is_empty(char *map)
+void	throw_errors_for_check_map_values(int player, int exit, int collectables)
 {
-	if (!*map)
-		exit_with_error("The map is a string, which is good. But the string is empty! No good. Load a valid map!", false);
+	if (player == 0)
+		exit_with_error("Invalid map! There is no player! This might by zen, but it will not work!", false);
+	else if (player > 1)
+		exit_with_error("Invalid map! There is more than one player! Multi-player mode still in prgress...", false);
+	if (exit == 0)
+		exit_with_error("Invalid map! There is no exit! Without an exit, you will not be able to exit the game. Are you sure this is what you want? You could be late for dinner.", false);
+	else if (exit > 1)
+		exit_with_error("Invalid map! There is more than one exit! Only one exit is allowed.", false);
+	if (collectables < 1)
+		exit_with_error("Invalid map! There are no collectibles! Without any collectibles to collect, you will not be able to collect any of them any, the exit will never open, and you will be stuck in the game for the rest of your life. Are you sure this is what you want?", false);
 }
-
-void	check_for_empty_lines(char *map)
-{
-	char *map_tmp;
-
-	map_tmp = map;
-	if (*map_tmp == '\n')
-		exit_with_error("Empty line in map!", false);
-	while (*map_tmp)
-	{
-		if ((*map_tmp == '\n' && *(map_tmp + 1) == '\n'))
-			exit_with_error("Empty line in map!", false);
-		map_tmp++;
-	}
-}
-
-void	wrong_content(char *map)
+void	check_map_values(char *map)
 {
 	int	player;
-	int	collectibles;
+	int	collectables;
 	int	exit;
 	int	i;
 
 	player = 0;
 	exit = 0;
-	collectibles = 0;
+	collectables = 0;
 	i = 0;
 	while (map[i])
 	{
 		if (!(ft_strchr("PECX01\n", map[i])))
-			exit_with_error("Invalid characters in the map file!", false);
+			exit_with_error("Invalid values in the map file! The allowed character are P, E, C, X, 0 and 1.", false);
 		if (map[i] == 'P')
 			player++;
-		if (map[i] == 'C')
-			collectibles++;
-		if (map[i] == 'E')
+		else if (map[i] == 'C')
+			collectables++;
+		else if (map[i] == 'E')
 			exit++;
 		i++;
 	}
-	if (player != 1 || exit != 1 || collectibles < 1)
-		exit_with_error("Invalid map! The map contains more than 1 player or more than 1 exit or no collectibles at all!", false);
+	if (player != 1 || exit != 1 || collectables < 1)
+		throw_errors_for_check_map_values(player, exit, collectables);
 }
 
-void	wrong_shape(char *map)
-{
-	size_t	curr_line_len;
-	size_t	i;
-	size_t	len;
 
-	curr_line_len = 0;
+void	wall_check_horizontal(char *map)
+{
+	size_t	i;
+	size_t	width;
+	size_t	map_len;
+
 	i = 0;
-	len = 0;
+	width = 0;
+	map_len = ft_strlen(map);
 	while (map[i] != '\0')
 	{
 		while (map[i] != '\n' && map[i] != '\0')
 		{
+			if (map[i] != '1')
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i++;
-			curr_line_len++;
+			width++;
 		}
-		if (len == 0)
-			len = curr_line_len;
-		else if (curr_line_len != len)
-			exit_with_error("Invalid map! The map is not rectangular!", false);
-		curr_line_len = 0;
-		if (map[i] == '\n')
+		i = map_len - width;
+		while (map[i] != '\0')
+		{
+			if (map[i] != '1')
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i++;
+		}
 	}
 }
+
+void	wall_check_vertical(char *map)
+{
+	size_t	i;
+	size_t	width;
+	size_t	map_len;
+
+	i = 0;
+	width = 0;
+	map_len = ft_strlen(map);
+	while (map[i] != '\0')
+	{
+		while (map[i] != '\n')
+		{
+			i++;
+			width++;
+		}
+		i++;
+		while (i < map_len - width -1)
+		{
+			if (map[i] != '1' || map[i + width -1] != '1')
+				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
+			i = i + width + 1;
+		}
+		i = i + width;
+	}
+}
+
 
 void	wrong_wall(char *map)
 {
