@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,10 +12,10 @@
 
 #include "../include/so_long.h"
 
-void	empty_map(char *map)
+void	check_if_map_is_empty(char *map)
 {
-	if (!map[0])
-		exit_with_error("The map is empty!", false);
+	if (!*map)
+		exit_with_error("The map is a string, which is good. But the string is empty! No good. Load a valid map!", false);
 }
 
 void	empty_lines(char *map)

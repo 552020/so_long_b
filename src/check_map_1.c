@@ -23,9 +23,9 @@ void	check_file_extension(char *map_file)
 		exit_with_error("The map file should be .ber file", false);
 }
 
-void	map_check(char *map_str)
+void	check_map(char *map_str)
 {
-	empty_map(map_str);
+	check_if_map_is_empty(map_str);
 	empty_lines(map_str);
 	wrong_content(map_str);
 	wrong_shape(map_str);

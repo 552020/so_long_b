@@ -20,7 +20,7 @@ t_game	*init_game(char *map)
 	t_game	*game;
 
 	map_str = read_map(map);
-	map_check(map_str);
+	check_map(map_str);
 	map_arr = ft_split(map_str, '\n');
 	game = init_game_struct(map_arr);
 	flood_fill(game);
