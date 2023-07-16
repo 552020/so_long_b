@@ -44,8 +44,8 @@ typedef struct s_game {
 	char			**map_grid;
 	size_t			width;
 	size_t			height;
-	size_t			collectibles;
 	size_t			steps;
+	size_t			collectibles;
 	size_t			collected;
 	size_t			player_x;
 	size_t			player_y;
@@ -91,7 +91,7 @@ t_img	*init_img_struct(mlx_t *mlx);
 // map functions
 
 char	*read_map(char *map);
-size_t	count_rows(char **map_grid);
+size_t	count_y(char **map_grid);
 size_t	count_collectibles(t_game *game);
 size_t	get_position(t_game *game, char axis, char obj);
 void	flood_fill(t_game *game);

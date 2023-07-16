@@ -1,14 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:34:10 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 18:24:51 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../include/so_long.h"
 
@@ -37,7 +27,7 @@ t_game	*init_game_struct(char **map_arr)
 	if (!game)
 		exit_with_error("Memory allocation error!", true);
 	game->width = ft_strlen(map_arr[0]);
-	game->height = count_rows(map_arr);
+	game->height = count_y(map_arr);
 	game->map_grid = map_arr;
 	game->steps = 0;
 	game->collectibles = count_collectibles(game);

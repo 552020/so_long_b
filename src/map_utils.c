@@ -13,7 +13,7 @@
 #include "../include/so_long.h"
 
 // counts rows in the map
-size_t	count_rows(char **map_grid)
+size_t	count_y(char **map_grid)
 {
 	size_t	i;
 
