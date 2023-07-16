@@ -31,10 +31,10 @@ t_game	*init_game_struct(char **map_arr)
 	game->map_grid = map_arr;
 	game->steps = 0;
 	game->collectibles = count_collectibles(game);
-	game->player_x = get_position(game, 'x', 'P');
-	game->player_y = get_position(game, 'y', 'P');
-	game->exit_x = get_position(game, 'x', 'E');
-	game->exit_y = get_position(game, 'y', 'E');
+	game->player_x = get_pos(game, 'x', 'P');
+	game->player_y = get_pos(game, 'y', 'P');
+	game->exit_x = get_pos(game, 'x', 'E');
+	game->exit_y = get_pos(game, 'y', 'E');
 	return (game);
 }
 
