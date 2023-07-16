@@ -94,8 +94,8 @@ char	*read_map(char *map);
 size_t	count_y(char **map_grid);
 size_t	count_collectibles(t_game *game);
 size_t	get_pos(t_game *game, char axis, char element);
-void	flood_fill(t_game *game);
-int		path_check(t_game *tmp, size_t y, size_t x);
+void	check_path(t_game *game);
+int		flood_fill(t_game *tmp, size_t y, size_t x);
 void	free_grid(char **grid, size_t grid_height);
 
 // image functions
@@ -112,7 +112,7 @@ void	load_player_up_texture(mlx_t *mlx, t_img *img);
 void	load_player_down_texture(mlx_t *mlx, t_img *img);
 
 void	render_background(t_game *game);
-void	select_image(t_game *game, size_t y, size_t x);
+void	render_image(t_game *game, size_t y, size_t x);
 void	render_map(t_game *game);
 void	screen_str(t_game *game);
 void	print_moves(t_game *game);

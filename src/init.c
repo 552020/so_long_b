@@ -12,7 +12,7 @@ t_game	*init_game(char *map)
 	check_map(map_str);
 	map_arr = ft_split(map_str, '\n');
 	game = init_game_struct(map_arr);
-	flood_fill(game);
+	check_path(game);
 	free(map_str);
 	return (game);
 }

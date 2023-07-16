@@ -22,7 +22,7 @@ void	render_background(t_game *game)
 	}
 }
 
-void	load_player(t_game *game, size_t y, size_t x)
+void	render_player(t_game *game, size_t y, size_t x)
 {
 	if (mlx_image_to_window(game->mlx, game->img->player,
 			x * PIXELS, y * PIXELS) < 0)
@@ -46,7 +46,7 @@ void	load_player(t_game *game, size_t y, size_t x)
 	game->img->player_down->instances[0].enabled = false;
 }
 
-void	select_image(t_game *game, size_t y, size_t x)
+void	render_image(t_game *game, size_t y, size_t x)
 {
 	size_t	img_size;
 
@@ -68,7 +68,7 @@ void	select_image(t_game *game, size_t y, size_t x)
 				x * PIXELS, y * PIXELS) < 0)
 			exit_with_error("Error while loading an image", false);
 	if (game->map_grid[y][x] == 'P')
-		load_player(game, y, x);
+		render_player(game, y, x);
 }
 
 void	render_map(t_game *game)
@@ -84,7 +84,7 @@ void	render_map(t_game *game)
 		x = 0;
 		while (x < game->width)
 		{
-			select_image(game, y, x);
+			render_image(game, y, x);
 			x++;
 		}
 		y++;
