@@ -1,17 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   load_images.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:23:40 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 18:25:30 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+// TODO: introduce macro for file path
 t_img	*load_grass_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*grass;

@@ -2,7 +2,6 @@
 
 #include "../include/so_long.h"
 
-// takes map as argument and initializes game
 t_game	*init_game(char *map)
 {
 	char	*map_str;
@@ -18,7 +17,6 @@ t_game	*init_game(char *map)
 	return (game);
 }
 
-// fills game struct with map information
 t_game	*init_game_struct(char **map_arr)
 {
 	t_game	*game;
@@ -38,7 +36,6 @@ t_game	*init_game_struct(char **map_arr)
 	return (game);
 }
 
-// initializes game images
 t_img	*init_img_struct(mlx_t *mlx)
 {
 	t_img	*images;
