@@ -15,7 +15,7 @@ void	check_map(char *map_str)
 	check_for_empty_lines(map_str);
 	check_map_values(map_str);
 	check_map_shape(map_str);
-	wrong_wall(map_str);
+	check_wall(map_str);
 }
 
 void	check_if_map_is_empty(char *map)
@@ -38,6 +38,8 @@ void	check_for_empty_lines(char *map)
 			exit_with_error("Empty line in map!", false);
 		map_tmp++;
 	}
+	if (*(map_tmp - 1) == '\n')
+		exit_with_error("Empty line in map!", false);
 }
 
 void	check_map_shape(char *map)

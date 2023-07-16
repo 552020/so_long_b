@@ -42,15 +42,11 @@ void	check_map_values(char *map)
 }
 
 
-void	wall_check_horizontal(char *map)
+void	check_wall_horizontal(char *map, size_t map_len)
 {
 	size_t	i;
-	size_t	width;
-	size_t	map_len;
 
 	i = 0;
-	width = 0;
-	map_len = ft_strlen(map);
 	while (map[i] != '\0')
 	{
 		while (map[i] != '\n' && map[i] != '\0')
@@ -58,35 +54,25 @@ void	wall_check_horizontal(char *map)
 			if (map[i] != '1')
 				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
 			i++;
-			width++;
 		}
-		i = map_len - width;
-		while (map[i] != '\0')
+		i = map_len - 1;
+		while (map[i] != '\n')
 		{
 			if (map[i] != '1')
 				exit_with_error("The wall should delimitate the gaming area. This is not the case.", false);
-			i++;
+			i--;
 		}
+		break;
 	}
 }
 
-void	wall_check_vertical(char *map)
+void	check_wall_vertical(char *map, size_t map_len, size_t width)
 {
 	size_t	i;
-	size_t	width;
-	size_t	map_len;
 
-	i = 0;
-	width = 0;
-	map_len = ft_strlen(map);
+	i = width + 1;
 	while (map[i] != '\0')
 	{
-		while (map[i] != '\n')
-		{
-			i++;
-			width++;
-		}
-		i++;
 		while (i < map_len - width -1)
 		{
 			if (map[i] != '1' || map[i + width -1] != '1')
@@ -97,9 +83,20 @@ void	wall_check_vertical(char *map)
 	}
 }
 
-
-void	wrong_wall(char *map)
+void	check_wall(char *map)
 {
-	wall_check_horizontal(map);
-	wall_check_vertical(map);
+	size_t	map_len;
+	size_t	width;
+	int		i;
+
+	i = 0;
+	map_len = ft_strlen(map);
+	width = 0;
+	while(map[i] != '\n')
+	{
+		i++;
+		width++;
+	}
+	check_wall_horizontal(map, map_len);
+	check_wall_vertical(map, map_len, width);
 }

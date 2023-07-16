@@ -70,15 +70,16 @@ typedef struct s_var {
 // TODO: replace write_error with exit_with_error
 //void	write_error(char *str);
 void	exit_with_error(const char *msg, bool is_system_error);
+
+void	check_file_extension(char *file_name_str);
+
 void	check_map(char *map_str);
 void	check_if_map_is_empty(char *map);
 void	check_for_empty_lines(char *map);
 void	check_map_values(char *map);
 void	check_map_shape(char *map);
-void	wrong_wall(char *map);
-void	wall_check_horizontal(char *map);
-void	wall_check_vertical(char *map);
-void	check_file_extension(char *file_name_str);
+void	check_wall(char *map);
+
 void	free_game(t_game *game);
 
 // initialization
