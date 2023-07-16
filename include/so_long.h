@@ -99,19 +99,19 @@ int		path_check(t_game *tmp, size_t y, size_t x);
 void	free_grid(char **grid, size_t grid_height);
 
 // image functions
-t_img	*load_grass_texture(mlx_t *mlx, t_img *img);
-t_img	*load_brick_wall_texture(mlx_t *mlx, t_img *img);
-t_img	*load_collectible_texture(mlx_t *mlx, t_img *img);
-t_img	*load_exit_closed(mlx_t *mlx, t_img	*img);
-t_img	*load_exit_open(mlx_t *mlx, t_img *img);
-t_img	*load_enemy_texture(mlx_t *mlx, t_img *img);
-t_img	*load_player_texture(mlx_t *mlx, t_img *img);
-t_img	*load_player_right_texture(mlx_t *mlx, t_img *img);
-t_img	*load_player_left_texture(mlx_t *mlx, t_img *img);
-t_img	*load_player_up_texture(mlx_t *mlx, t_img *img);
-t_img	*load_player_down_texture(mlx_t *mlx, t_img *img);
+void	load_grass_texture(mlx_t *mlx, t_img *img);
+void	load_brick_wall_texture(mlx_t *mlx, t_img *img);
+void	load_collectible_texture(mlx_t *mlx, t_img *img);
+void	load_exit_closed(mlx_t *mlx, t_img	*img);
+void	load_exit_open(mlx_t *mlx, t_img *img);
+void	load_enemy_texture(mlx_t *mlx, t_img *img);
+void	load_player_texture(mlx_t *mlx, t_img *img);
+void	load_player_right_texture(mlx_t *mlx, t_img *img);
+void	load_player_left_texture(mlx_t *mlx, t_img *img);
+void	load_player_up_texture(mlx_t *mlx, t_img *img);
+void	load_player_down_texture(mlx_t *mlx, t_img *img);
 
-void	fill_background(t_game *game);
+void	render_background(t_game *game);
 void	select_image(t_game *game, size_t y, size_t x);
 void	render_map(t_game *game);
 void	screen_str(t_game *game);

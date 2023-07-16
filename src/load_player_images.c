@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-t_img	*load_player_texture(mlx_t *mlx, t_img *img)
+void	load_player_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player;
 
@@ -23,10 +23,9 @@ t_img	*load_player_texture(mlx_t *mlx, t_img *img)
 	if (!img->player)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player);
-	return (img);
 }
 
-t_img	*load_player_right_texture(mlx_t *mlx, t_img *img)
+void	load_player_right_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player_right;
 
@@ -37,10 +36,9 @@ t_img	*load_player_right_texture(mlx_t *mlx, t_img *img)
 	if (!img->player_right)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_right);
-	return (img);
 }
 
-t_img	*load_player_left_texture(mlx_t *mlx, t_img *img)
+void	load_player_left_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player_left;
 
@@ -51,10 +49,9 @@ t_img	*load_player_left_texture(mlx_t *mlx, t_img *img)
 	if (!img->player_left)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_left);
-	return (img);
 }
 
-t_img	*load_player_up_texture(mlx_t *mlx, t_img *img)
+void	load_player_up_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player_up;
 
@@ -65,10 +62,9 @@ t_img	*load_player_up_texture(mlx_t *mlx, t_img *img)
 	if (!img->player_up)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_up);
-	return (img);
 }
 
-t_img	*load_player_down_texture(mlx_t *mlx, t_img *img)
+void	load_player_down_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player_down;
 
@@ -79,5 +75,4 @@ t_img	*load_player_down_texture(mlx_t *mlx, t_img *img)
 	if (!img->player_down)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(player_down);
-	return (img);
 }

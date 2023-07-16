@@ -1,18 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:40:34 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 22:50:18 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	fill_background(t_game *game)
+void	render_background(t_game *game)
 {
 	size_t		x;
 	size_t		y;
@@ -87,6 +76,7 @@ void	render_map(t_game *game)
 	size_t		x;
 	size_t		y;
 
+	render_background(game);
 	x = 0;
 	y = 0;
 	while (y < game->height)

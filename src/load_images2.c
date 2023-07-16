@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-t_img	*load_enemy_texture(mlx_t *mlx, t_img *img)
+void	load_enemy_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*enemy;
 
@@ -23,5 +23,4 @@ t_img	*load_enemy_texture(mlx_t *mlx, t_img *img)
 	if (!img->enemy)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(enemy);
-	return (img);
 }

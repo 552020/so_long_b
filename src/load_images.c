@@ -2,7 +2,7 @@
 #include "../include/so_long.h"
 
 // TODO: introduce macro for file path
-t_img	*load_grass_texture(mlx_t *mlx, t_img *img)
+void	load_grass_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*grass;
 
@@ -13,10 +13,9 @@ t_img	*load_grass_texture(mlx_t *mlx, t_img *img)
 	if (!img->grass)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(grass);
-	return (img);
 }
 
-t_img	*load_brick_wall_texture(mlx_t *mlx, t_img *img)
+void	load_brick_wall_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*brick_wall;
 
@@ -27,10 +26,9 @@ t_img	*load_brick_wall_texture(mlx_t *mlx, t_img *img)
 	if (!img->brick_wall)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture (brick_wall);
-	return (img);
 }
 
-t_img	*load_collectible_texture(mlx_t *mlx, t_img *img)
+void	load_collectible_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*collectible;
 
@@ -41,10 +39,9 @@ t_img	*load_collectible_texture(mlx_t *mlx, t_img *img)
 	if (!img->collectible)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(collectible);
-	return (img);
 }
 
-t_img	*load_exit_closed(mlx_t *mlx, t_img	*img)
+void	load_exit_closed(mlx_t *mlx, t_img	*img)
 {
 	mlx_texture_t	*exit;
 
@@ -55,10 +52,9 @@ t_img	*load_exit_closed(mlx_t *mlx, t_img	*img)
 	if (!img->exit_closed)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(exit);
-	return (img);
 }
 
-t_img	*load_exit_open(mlx_t *mlx, t_img *img)
+void	load_exit_open(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*exit;
 
@@ -69,5 +65,4 @@ t_img	*load_exit_open(mlx_t *mlx, t_img *img)
 	if (!img->exit_open)
 		exit_with_error("Error while loading the image", false);
 	mlx_delete_texture(exit);
-	return (img);
 }
