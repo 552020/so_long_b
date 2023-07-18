@@ -113,9 +113,9 @@ void	load_player_down_texture(mlx_t *mlx, t_img *img);
 void	render_background(t_game *game);
 void	render_image(t_game *game, size_t y, size_t x);
 void	render_map(t_game *game);
-void	screen_str(t_game *game);
-void	print_moves(t_game *game);
-void	print_collectibles(t_game *game);
+void	render_info(t_game *game);
+void	render_moves(t_game *game);
+void	render_collected(t_game *game);
 
 // move functions
 

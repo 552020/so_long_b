@@ -28,7 +28,7 @@ OBJ_DIR = objs/
 
 SRCS =	so_long.c utils.c init.c check_map_1.c \
 		map_utils.c check_path.c load_images.c load_images2.c render.c \
-		move_functions.c move_functions2.c enemy_patrol.c screen_string.c \
+		move_functions.c move_functions2.c enemy_patrol.c render_info.c \
 		load_player_images.c move_functions_core.c check_map_2.c 
 
 SRC	= $(addprefix $(SRC_DIR), $(SRCS))

@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   move_functions2.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:17:29 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 22:52:04 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../include/so_long.h"
 
@@ -20,9 +9,9 @@ t_game	*move_up(t_game *game)
 		if (game->map_grid[game->player_y - 1][game->player_x] == 'C')
 		{
 			pick_collectibles(game, game->player_y - 1, game->player_x);
-			print_collectibles(game);
-			game->map_grid[game->player_y - 1][game->player_x] = '0';
 			game->collected += 1;
+			render_collected(game);
+			game->map_grid[game->player_y - 1][game->player_x] = '0';
 		}
 		move_up_core(game);
 	}
@@ -38,9 +27,9 @@ t_game	*move_down(t_game *game)
 		if (game->map_grid[game->player_y + 1][game->player_x] == 'C')
 		{
 			pick_collectibles(game, game->player_y + 1, game->player_x);
-			print_collectibles(game);
-			game->map_grid[game->player_y + 1][game->player_x] = '0';
 			game->collected += 1;
+			render_collected(game);
+			game->map_grid[game->player_y + 1][game->player_x] = '0';
 		}
 		move_down_core(game);
 	}
@@ -56,9 +45,9 @@ t_game	*move_right(t_game *game)
 		if (game->map_grid[game->player_y][game->player_x + 1] == 'C')
 		{
 			pick_collectibles(game, game->player_y, game->player_x + 1);
-			print_collectibles(game);
-			game->map_grid[game->player_y][game->player_x + 1] = '0';
 			game->collected += 1;
+			render_collected(game);
+			game->map_grid[game->player_y][game->player_x + 1] = '0';
 		}
 		move_right_core(game);
 	}
@@ -74,9 +63,9 @@ t_game	*move_left(t_game *game)
 		if (game->map_grid[game->player_y][game->player_x - 1] == 'C')
 		{
 			pick_collectibles(game, game->player_y, game->player_x - 1);
-			print_collectibles(game);
-			game->map_grid[game->player_y][game->player_x - 1] = '0';
 			game->collected += 1;
+			render_collected(game);
+			game->map_grid[game->player_y][game->player_x - 1] = '0';
 		}
 		move_left_core(game);
 	}
@@ -86,7 +75,7 @@ t_game	*move_left(t_game *game)
 
 void	win_check(t_game *game)
 {
-	print_moves(game);
+	render_moves(game);
 	if (game->collected == game->collectibles)
 	{
 		if (mlx_image_to_window(game->mlx, game->img->exit_open,

@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	game->img = init_img_struct(game->mlx);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	render_map(game);
-	screen_str(game);
+	render_info(game);
 	mlx_key_hook(game->mlx, move_hook, game);
 	mlx_loop_hook(game->mlx, enemy_hook, game);
 	mlx_loop(game->mlx);
