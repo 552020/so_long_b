@@ -35,7 +35,6 @@ typedef struct s_img {
 	mlx_image_t			*exit_closed;
 	mlx_image_t			*exit_open;
 	mlx_image_t			*enemy;
-	mlx_image_t			*print_moves;
 	mlx_image_t			*count_moves;
 	mlx_image_t			*collectibles_count;
 }	t_img;

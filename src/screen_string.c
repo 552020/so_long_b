@@ -2,7 +2,7 @@
 
 void	screen_str(t_game *game)
 {
-	game->img->print_moves = mlx_put_string(game->mlx, "MOVES:",
+	mlx_put_string(game->mlx, "MOVES:",
 			(game->width - 3) * PIXELS, game->height * PIXELS - 48);
 	mlx_image_to_window(game->mlx, game->img->collectible,
 		(game->width - 1.6) * PIXELS, game->height * PIXELS - 55);
@@ -12,13 +12,13 @@ void	screen_str(t_game *game)
 
 void	print_moves(t_game *game)
 {
-	char	*steps_as_str;
+	char	*moves_str;
 
-	steps_as_str = ft_itoa(game->moves);
+	moves_str = ft_itoa(game->moves);
 	mlx_delete_image(game->mlx, game->img->count_moves);
-	game->img->count_moves = mlx_put_string(game->mlx, steps_as_str,
+	game->img->count_moves = mlx_put_string(game->mlx, moves_str,
 			(game->width - 2) * PIXELS, game->height * PIXELS - 48);
-	free(steps_as_str);
+	free(moves_str);
 }
 
 void	print_collectibles(t_game *game)
