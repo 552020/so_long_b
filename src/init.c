@@ -27,7 +27,7 @@ t_game	*init_game_struct(char **map_arr)
 	game->width = ft_strlen(map_arr[0]);
 	game->height = count_y(map_arr);
 	game->map_grid = map_arr;
-	game->steps = 0;
+	game->moves = 0;
 	game->collectibles = count_collectibles(game);
 	game->player_x = get_pos(game, 'x', 'P');
 	game->player_y = get_pos(game, 'y', 'P');

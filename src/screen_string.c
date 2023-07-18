@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   screen_string.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:19:09 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 21:07:23 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/so_long.h"
 
 void	screen_str(t_game *game)
@@ -24,13 +12,13 @@ void	screen_str(t_game *game)
 
 void	print_moves(t_game *game)
 {
-	char	*string;
+	char	*steps_as_str;
 
-	string = ft_itoa(game->steps);
+	steps_as_str = ft_itoa(game->moves);
 	mlx_delete_image(game->mlx, game->img->count_moves);
-	game->img->count_moves = mlx_put_string(game->mlx, string,
+	game->img->count_moves = mlx_put_string(game->mlx, steps_as_str,
 			(game->width - 2) * PIXELS, game->height * PIXELS - 48);
-	free(string);
+	free(steps_as_str);
 }
 
 void	print_collectibles(t_game *game)

@@ -44,7 +44,7 @@ typedef struct s_game {
 	char			**map_grid;
 	size_t			width;
 	size_t			height;
-	size_t			steps;
+	size_t			moves;
 	size_t			collectibles;
 	size_t			collected;
 	size_t			player_x;
