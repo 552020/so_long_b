@@ -1,5 +1,19 @@
-
 #include "../include/so_long.h"
+
+void	move_hook(mlx_key_data_t keydata, void *tmp)
+{
+	t_game	*game;
+
+	game = (t_game *) tmp;
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+		move_up(game);
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		move_down(game);
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		move_right(game);
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		move_left(game);
+}
 
 t_game	*move_up(t_game *game)
 {
@@ -13,9 +27,11 @@ t_game	*move_up(t_game *game)
 			render_collected(game);
 			game->map_grid[game->player_y - 1][game->player_x] = '0';
 		}
+
 		move_up_core(game);
 	}
-	win_check(game);
+	render_moves(game);
+	check_win(game);
 	return (game);
 }
 
@@ -33,7 +49,8 @@ t_game	*move_down(t_game *game)
 		}
 		move_down_core(game);
 	}
-	win_check(game);
+	render_moves(game);
+	check_win(game);
 	return (game);
 }
 
@@ -51,7 +68,8 @@ t_game	*move_right(t_game *game)
 		}
 		move_right_core(game);
 	}
-	win_check(game);
+	render_moves(game);
+	check_win(game);
 	return (game);
 }
 
@@ -69,24 +87,29 @@ t_game	*move_left(t_game *game)
 		}
 		move_left_core(game);
 	}
-	win_check(game);
+	render_moves(game);
+	check_win(game);
 	return (game);
 }
 
-void	win_check(t_game *game)
+
+
+
+
+void	pick_collectibles(t_game *game, int y, int x)
 {
-	render_moves(game);
-	if (game->collected == game->collectibles)
+	size_t	collectible_i;
+
+	collectible_i = 0;
+	x = x * PIXELS + 16;
+	y = y * PIXELS + 16;
+	while (collectible_i < game->img->collectible->count)
 	{
-		if (mlx_image_to_window(game->mlx, game->img->exit_open,
-				game->exit_x * PIXELS, game->exit_y * PIXELS) < 0)
-			exit_with_error("Error while loading an image!", false);
-		game->map_grid[game->exit_y][game->exit_x] = '0';
-		if (game->player_x == game->exit_x && game->player_y == game->exit_y)
+		if (game->img->collectible->instances[collectible_i].x == x
+			&& game->img->collectible->instances[collectible_i].y == y)
 		{
-			sleep(1);
-			mlx_close_window(game->mlx);
-			ft_putendl_fd("Congratulations, you won!", 1);
+			game->img->collectible->instances[collectible_i].enabled = false;
 		}
+		collectible_i++;
 	}
 }

@@ -130,7 +130,7 @@ void	move_down_core(t_game *game);
 void	move_left_core(t_game *game);
 void	move_right_core(t_game *game);
 void	pick_collectibles(t_game *game, int y, int x);
-void	win_check(t_game *game);
+void	check_win(t_game *game);
 void	enemy_hook(void *tmp);
 void	move_enemies(const t_game *game, int count);
 void	kill_check(const t_game *game);
