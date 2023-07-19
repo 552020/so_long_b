@@ -31,6 +31,5 @@ void	main_loop_hook(void *tmp)
 	
 	game = (t_game *)tmp;
 	check_escape(game);
-	mlx_loop_hook(game->mlx, enemy_hook, game);
-	mlx_loop(game->mlx);
+	enemy_hook(game);
 }
