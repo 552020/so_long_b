@@ -117,8 +117,8 @@ void	render_info(t_game *game);
 void	render_moves(t_game *game);
 void	render_collected(t_game *game);
 
-// move functions
 
+void	main_loop_hook(void *tmp);
 void	move_hook(mlx_key_data_t keydata, void *tmp);
 void	move_player(t_game *game, char dir);
 t_game	*move_up(t_game *game);

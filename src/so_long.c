@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	render_map(game);
 	render_info(game);
 	mlx_key_hook(game->mlx, move_hook, game);
-	mlx_loop_hook(game->mlx, enemy_hook, game);
+	mlx_loop_hook(game->mlx, main_loop_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	free_game(game);

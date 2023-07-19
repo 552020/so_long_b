@@ -12,25 +12,7 @@
 
 #include "../include/so_long.h"
 
-// function for enemy patrol loop
-void	enemy_hook(void *tmp)
-{
-	const t_game	*game;
-	size_t			count;
-	static int		i;
 
-	game = tmp;
-	count = 0;
-	kill_check(game);
-	if (i++ < 60)
-		return ;
-	while (count < game->img->enemy->count)
-	{
-		move_enemies (game, count);
-		count++;
-	}
-	i = 0;
-}
 
 // check if the player is touched by the patrol
 void	kill_check(const t_game *game)

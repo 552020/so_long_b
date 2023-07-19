@@ -1,25 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   move_functions.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/08 17:28:08 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/11 13:27:14 by bsengeze         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../include/so_long.h"
 
-// function that processes keyboard input into game
+/* 
+mlx_is_key_down: polling approach;
+mlx_key_hook: event-driven approach;
+TODO: actually the mlx_is_key_down should be declared outside of the hook. 
+
+*/
+
+
+
 void	move_hook(mlx_key_data_t keydata, void *tmp)
 {
 	t_game	*game;
 
 	game = (t_game *) tmp;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(game->mlx);
+	// if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
+		// mlx_close_window(game->mlx);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		move_player(game, 'w');
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
