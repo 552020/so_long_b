@@ -6,30 +6,12 @@ void 	check_escape(t_game *game)
 		mlx_close_window(game->mlx);
 }
 
-void	enemy_hook(void *tmp)
-{
-	const t_game	*game;
-	size_t			count;
-	static int		i;
 
-	game = tmp;
-	count = 0;
-	kill_check(game);
-	if (i++ < 60)
-		return ;
-	while (count < game->img->enemy->count)
-	{
-		move_enemies (game, count);
-		count++;
-	}
-	i = 0;
-}
-
-void	main_loop_hook(void *tmp)
+void	main_loop_hook(void *game_void_ptr)
 {
 	t_game	*game;
 	
-	game = (t_game *)tmp;
+	game = (t_game *)game_void_ptr;
 	check_escape(game);
 	enemy_hook(game);
 }

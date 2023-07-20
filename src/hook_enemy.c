@@ -1,11 +1,6 @@
-
-
 #include "../include/so_long.h"
 
-
-
-// check if the player is touched by the patrol
-void	kill_check(const t_game *game)
+void	kill_check(t_game *game)
 {
 	size_t	count;
 
@@ -25,8 +20,7 @@ void	kill_check(const t_game *game)
 	}
 }
 
-// function to move enemies in random directions
-void	move_enemies(const t_game *game, int count)
+void	move_enemies(t_game *game, int count)
 {
 	t_tmp			tmp;
 
@@ -46,4 +40,21 @@ void	move_enemies(const t_game *game, int count)
 		*tmp.x += tmp.ran_x;
 		*tmp.y += tmp.ran_y;
 	}
+}
+
+void	enemy_hook(t_game *game)
+{
+	size_t			count;
+	static int		i;
+
+	count = 0;
+	kill_check(game);
+	if (i++ < 60)
+		return ;
+	while (count < game->img->enemy->count)
+	{
+		move_enemies (game, count);
+		count++;
+	}
+	i = 0;
 }

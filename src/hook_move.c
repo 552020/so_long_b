@@ -92,10 +92,6 @@ t_game	*move_left(t_game *game)
 	return (game);
 }
 
-
-
-
-
 void	pick_collectibles(t_game *game, int y, int x)
 {
 	size_t	collectible_i;
