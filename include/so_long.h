@@ -56,14 +56,24 @@ typedef struct s_game {
 
 
 // TODO Eventually remove - relocate this.
-typedef struct s_var {
-	int				ran_x;
-	int				ran_y;
-	int				*x;
-	int				*y;
-	int				index_x;
-	int				index_y;
-}	t_tmp;
+// typedef struct s_var {
+// 	int				ran_x;
+// 	int				ran_y;
+// 	int				*x;
+// 	int				*y;
+// 	int				index_x;
+// 	int				index_y;
+// }	t_tmp;
+
+typedef struct s_enemy_move {
+	int				x_increment;
+	int				y_increment;
+	int				*pos_x;
+	int				*pos_y;
+	int				next_x;
+	int				next_y;
+}	t_enemy_move;
+
 
 // error functions
 // TODO: replace write_error with exit_with_error
