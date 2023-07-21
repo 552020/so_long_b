@@ -16,6 +16,7 @@ void	load_player_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player;
 
+	// player = mlx_load_png("./sprites/Player.png");
 	player = mlx_load_png("./sprites/Player.png");
 	if (!player)
 		exit_with_error("Error while loading png", false);

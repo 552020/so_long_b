@@ -41,24 +41,6 @@ void	move_enemies(t_game *game, int count)
 		*enemy_move.pos_x += enemy_move.x_increment;
 		*enemy_move.pos_y += enemy_move.y_increment;
 	}
-
-	// tmp.x = &game->img->enemy->instances[count].x;
-	// tmp.y = &game->img->enemy->instances[count].y;
-	// tmp.ran_x = (rand() % 3 - 1) * 64;
-	// tmp.ran_y = (rand() % 3 - 1) * 64;
-	// tmp.index_x = *tmp.x + tmp.ran_x;
-	// tmp.index_y = *tmp.y + tmp.ran_y;
-
-	// if (tmp.index_x != 0)
-	// 	tmp.index_x /= PIXELS;
-	// if (tmp.index_y != 0)
-	// 	tmp.index_y /= PIXELS;
-	// if (game->map_grid[tmp.index_y][tmp.index_x] != '1'
-	// 	&& game->map_grid[tmp.index_y][tmp.index_x] != 'E')
-	// {
-	// 	*tmp.x += tmp.ran_x;
-	// 	*tmp.y += tmp.ran_y;
-	// }
 }
 
 void	enemy_hook(t_game *game)
@@ -66,9 +48,6 @@ void	enemy_hook(t_game *game)
 	size_t			count;
 	static double 	initial_time;
 	double 			current_time;
-	// static bool		print_frequency = true;
-	// static bool stop_printing = false;
-
 
 	current_time = mlx_get_time();
 	if (initial_time == 0)
