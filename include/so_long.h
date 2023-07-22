@@ -21,7 +21,18 @@
 # include <stdbool.h>
 
 # define PIXELS 64
-# define WALL_PATH "textures/wall.xpm";
+
+# define WALL_PATH "./sprites/swimming_pool.png"
+# define GROUND_PATH "./sprites/beach.png"
+# define COLLECTIBLE_PATH "./sprites/umbrella.png"
+# define EXIT_CLOSED_PATH "./sprites/golden_gate_closed.png"
+# define EXIT_OPEN_PATH "./sprites/golden_gate_open.png"
+# define ENEMY_PATH "./sprites/pamela.png"
+# define PLAYER_PATH "./sprites/mitch.png"
+# define PLAYER_RIGHT_PATH "./sprites/mitch_right.png"
+# define PLAYER_LEFT_PATH "./sprites/mitch_left.png"
+# define PLAYER_UP_PATH "./sprites/mitch_up.png"
+# define PLAYER_DOWN_PATH "./sprites/mitch_down.png"
 
 
 
