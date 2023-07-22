@@ -37,8 +37,6 @@ t_game	*init_game_struct(char **map_arr)
 	return (game);
 }
 
-// TODO; change var names- brick_wall and ground
-
 t_img	*init_img_struct(mlx_t *mlx)
 {
 	t_img	*images;

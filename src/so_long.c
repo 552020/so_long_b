@@ -12,11 +12,12 @@
 
 # include "so_long.h"
 
+//TODO: create a macro for the error message
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	//TODO: create a macro for the error message
 	if (argc != 2)
 		exit_with_error("To play the game run ./so_long with some .ber map file!", false);
 	check_file_extension(argv[1]);
@@ -36,3 +37,4 @@ int	main(int argc, char **argv)
 	free_game(game);
 	return (0);
 }
+
