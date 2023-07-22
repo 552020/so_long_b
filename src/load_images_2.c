@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	load_enemy_texture(mlx_t *mlx, t_img *img)
 {

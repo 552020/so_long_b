@@ -1,5 +1,5 @@
 // TODO change to absolute path
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	throw_errors_for_check_map_values(int player, int exit, int collectables)
 {

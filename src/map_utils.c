@@ -1,6 +1,6 @@
 
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 
 char	*read_map(char *map)

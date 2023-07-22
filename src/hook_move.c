@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	move_hook(mlx_key_data_t keydata, void *tmp)
 {

@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void exit_with_error(const char *msg, bool is_system_error)
 {

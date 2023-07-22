@@ -1,4 +1,4 @@
-#include "../include/so_long.h"
+#include "so_long.h"
 
 // TODO: Maybe a small animation for when the player dies?
 void	check_kill(t_game *game)

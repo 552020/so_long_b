@@ -1,6 +1,6 @@
 
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 t_game	*init_game(char *map)
 {
