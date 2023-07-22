@@ -55,16 +55,6 @@ typedef struct s_game {
 }	t_game;
 
 
-// TODO Eventually remove - relocate this.
-// typedef struct s_var {
-// 	int				ran_x;
-// 	int				ran_y;
-// 	int				*x;
-// 	int				*y;
-// 	int				index_x;
-// 	int				index_y;
-// }	t_tmp;
-
 typedef struct s_enemy_move {
 	int				x_increment;
 	int				y_increment;
@@ -73,7 +63,6 @@ typedef struct s_enemy_move {
 	int				next_x;
 	int				next_y;
 }	t_enemy_move;
-
 
 // error functions
 // TODO: replace write_error with exit_with_error
@@ -91,13 +80,11 @@ void	check_wall(char *map);
 
 void	free_game(t_game *game);
 
-// initialization
 
 t_game	*init_game(char *map);
 t_game	*init_game_struct(char **map_grid);
 t_img	*init_img_struct(mlx_t *mlx);
 
-// map functions
 
 char	*read_map(char *map);
 size_t	count_y(char **map_grid);
@@ -107,7 +94,6 @@ void	check_path(t_game *game);
 int		flood_fill(t_game *tmp, size_t y, size_t x);
 void	free_grid(char **grid, size_t grid_height);
 
-// image functions
 void	load_grass_texture(mlx_t *mlx, t_img *img);
 void	load_brick_wall_texture(mlx_t *mlx, t_img *img);
 void	load_collectible_texture(mlx_t *mlx, t_img *img);
