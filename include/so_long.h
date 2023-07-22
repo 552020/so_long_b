@@ -21,11 +21,14 @@
 # include <stdbool.h>
 
 # define PIXELS 64
+# define WALL_PATH "textures/wall.xpm";
 
-// TODO Change name variables to more universal values. grass to ground, or empty and so on. 
+
+
+// TODO Change name variables to more universal values. ground to ground, or empty and so on. 
 typedef struct s_img {
-	mlx_image_t			*brick_wall;
-	mlx_image_t			*grass;
+	mlx_image_t			*wall;
+	mlx_image_t			*ground;
 	mlx_image_t			*collectible;
 	mlx_image_t			*player;
 	mlx_image_t			*player_right;
@@ -94,8 +97,8 @@ void	check_path(t_game *game);
 int		flood_fill(t_game *tmp, size_t y, size_t x);
 void	free_grid(char **grid, size_t grid_height);
 
-void	load_grass_texture(mlx_t *mlx, t_img *img);
-void	load_brick_wall_texture(mlx_t *mlx, t_img *img);
+void	load_ground_texture(mlx_t *mlx, t_img *img);
+void	load_wall_texture(mlx_t *mlx, t_img *img);
 void	load_collectible_texture(mlx_t *mlx, t_img *img);
 void	load_exit_closed(mlx_t *mlx, t_img	*img);
 void	load_exit_open(mlx_t *mlx, t_img *img);

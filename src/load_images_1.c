@@ -2,30 +2,30 @@
 #include "../include/so_long.h"
 
 // TODO: introduce macro for file path
-void	load_grass_texture(mlx_t *mlx, t_img *img)
+void	load_ground_texture(mlx_t *mlx, t_img *img)
 {
-	mlx_texture_t	*grass;
+	mlx_texture_t	*ground;
 
-	grass = mlx_load_png("./sprites/beach.png");
-	if (!grass)
+	ground = mlx_load_png("./sprites/beach.png");
+	if (!ground)
 		exit_with_error("Error while loading png - ground", false);
-	img->grass = mlx_texture_to_image(mlx, grass);
-	if (!img->grass)
+	img->ground = mlx_texture_to_image(mlx, ground);
+	if (!img->ground)
 		exit_with_error("Error while loading the image - ground", false);
-	mlx_delete_texture(grass);
+	mlx_delete_texture(ground);
 }
 
-void	load_brick_wall_texture(mlx_t *mlx, t_img *img)
+void	load_wall_texture(mlx_t *mlx, t_img *img)
 {
-	mlx_texture_t	*brick_wall;
+	mlx_texture_t	*wall;
 
-	brick_wall = mlx_load_png("./sprites/swimming_pool.png");
-	if (!brick_wall)
+	wall = mlx_load_png("./sprites/swimming_pool.png");
+	if (!wall)
 		exit_with_error("Error while loading png - wall", false);
-	img->brick_wall = mlx_texture_to_image(mlx, brick_wall);
-	if (!img->brick_wall)
+	img->wall = mlx_texture_to_image(mlx, wall);
+	if (!img->wall)
 		exit_with_error("Error while loading the image - wall", false);
-	mlx_delete_texture (brick_wall);
+	mlx_delete_texture (wall);
 }
 
 void	load_collectible_texture(mlx_t *mlx, t_img *img)

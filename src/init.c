@@ -37,7 +37,7 @@ t_game	*init_game_struct(char **map_arr)
 	return (game);
 }
 
-// TODO; change var names- bric_wall and grass
+// TODO; change var names- brick_wall and ground
 
 t_img	*init_img_struct(mlx_t *mlx)
 {
@@ -46,8 +46,8 @@ t_img	*init_img_struct(mlx_t *mlx)
 	images = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!images)
 		return (NULL);
-	load_grass_texture(mlx, images);
-	load_brick_wall_texture(mlx, images);
+	load_ground_texture(mlx, images);
+	load_wall_texture(mlx, images);
 	load_collectible_texture(mlx, images);
 	load_player_texture(mlx, images);
 	load_player_right_texture(mlx, images);

@@ -13,7 +13,7 @@ void	render_background(t_game *game)
 		x = 0;
 		while (x < game->width)
 		{
-			if (mlx_image_to_window(game->mlx, game->img->grass,
+			if (mlx_image_to_window(game->mlx, game->img->ground,
 					x * PIXELS, y * PIXELS) < 0)
 				exit_with_error("Error while loading an image", false);
 			x++;
@@ -52,7 +52,7 @@ void	render_image(t_game *game, size_t y, size_t x)
 
 	img_size = 32;
 	if (game->map_grid[y][x] == '1')
-		if (mlx_image_to_window(game->mlx, game->img->brick_wall,
+		if (mlx_image_to_window(game->mlx, game->img->wall,
 				x * PIXELS, y * PIXELS) < 0)
 			exit_with_error("Error while loading an image", false); 
 	if (game->map_grid[y][x] == 'C')
