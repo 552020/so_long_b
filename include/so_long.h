@@ -14,7 +14,6 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// TODO Remove hardcoded paths
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include <fcntl.h>
@@ -34,9 +33,6 @@
 # define PLAYER_UP_PATH "./sprites/mitch_up.png"
 # define PLAYER_DOWN_PATH "./sprites/mitch_down.png"
 
-
-
-// TODO Change name variables to more universal values. ground to ground, or empty and so on. 
 typedef struct s_img {
 	mlx_image_t			*wall;
 	mlx_image_t			*ground;
@@ -68,7 +64,6 @@ typedef struct s_game {
 	mlx_t			*mlx;
 }	t_game;
 
-
 typedef struct s_enemy_move {
 	int				x_increment;
 	int				y_increment;
@@ -78,9 +73,6 @@ typedef struct s_enemy_move {
 	int				next_y;
 }	t_enemy_move;
 
-// error functions
-// TODO: replace write_error with exit_with_error
-//void	write_error(char *str);
 void	exit_with_error(const char *msg, bool is_system_error);
 
 void	check_file_extension(char *file_name_str);
@@ -93,7 +85,6 @@ void	check_map_shape(char *map);
 void	check_wall(char *map);
 
 void	free_game(t_game *game);
-
 
 t_game	*init_game(char *map);
 t_game	*init_game_struct(char **map_grid);
