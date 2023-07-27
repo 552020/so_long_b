@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 16:41:14 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/20 17:17:56 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/10/31 00:57:01 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/21 18:36:34 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int		result;
-	int		neg;
+	int	i;
+	int	sign;
+	int	tot;
 
-	result = 0;
-	neg = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	i = 0;
+	sign = 1;
+	tot = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-')
 	{
-		if (*nptr++ == '-')
-			neg *= -1;
+		sign *= -1;
+		i++;
 	}
-	while (ft_isdigit(*nptr))
-		result = result * 10 + neg * (*nptr++ - '0');
-	return (result);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9' )
+	{
+		tot = tot * 10 + str[i] - '0';
+		i++;
+	}
+	return (tot * sign);
 }
-/*
-int main(void)
-{
-	printf("my atoi : %d", ft_atoi("-123"));
-    printf("lib atoi : %d", atoi("-123"));
-
-}
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slombard <slombard@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 19:01:17 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/22 22:13:00 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/16 00:31:23 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/21 18:52:48 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	len;
+	int	str_len;
 
-	len = 0;
-	while (*s)
+	str_len = 0;
+	while (s[str_len] != '\0')
+		str_len++;
+	while (str_len >= 0)
 	{
-		s++;
-		len++;
-	}
-	while (len != -1)
-	{
-		if (*s != (char)c)
-		{
-			s--;
-			len--;
-		}
-		else
-			return ((char *)s);
+		if ((char)c == s[str_len])
+			return ((char *) &s[str_len]);
+		str_len--;
 	}
 	return (NULL);
 }
-/*
-int main(void)
-{
-    char *test = "Berkcancox";
-    char c = 'c';
-    char *rest = ft_strrchr(test, c);
-    printf("Rest of the string is: %s ",rest);
-}
-*/

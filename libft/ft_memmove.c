@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 17:37:34 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/16 20:07:30 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/11/30 21:02:55 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/16 23:51:55 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,26 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*destm;
-	char	*srcm;
-	size_t	i;
+	char		*ptr_d;
+	const char	*ptr_s;
+	char		*ptr_db;
+	const char	*ptr_sb;
 
-	i = 0;
-	if (!dest && !src)
-		return (0);
-	destm = (char *)dest;
-	srcm = (char *)src;
-	if (destm > srcm)
+	ptr_d = dest;
+	ptr_s = src;
+	if (ptr_d < ptr_s)
 	{
 		while (n--)
-			destm[n] = srcm[n];
+			*ptr_d++ = *ptr_s++;
+		return (dest);
 	}
-	else
+	else if (ptr_d > ptr_s)
 	{
+		ptr_db = dest + (n - 1);
+		ptr_sb = src + (n - 1);
 		while (n--)
-		{
-			destm[i] = srcm[i];
-			i++;
-		}
+			*ptr_db-- = *ptr_sb--;
+		return (dest);
 	}
-	return (destm);
+	return (dest);
 }
-
-/*
-int main(void)
-{
-	char src[] = "Hello world!";
-	char dest[] = "0101";
-	
-	memmove(dest, src, 5);
-	printf("After memmove dest is :    %s, source is : %s\n", dest, src);
-	printf("After memmove dest address is :   %p\n", &dest);
-	ft_memmove(dest, src, 5);
-	printf("After ft_memmove dest is : %s, source is : %s\n", dest, src);
-	printf("After ft_memmove dest address is :%p\n", &dest);
-	return 0;
-}
-*/

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_player_images.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slombard <slombard@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/27 20:15:20 by slombard          #+#    #+#             */
+/*   Updated: 2023/07/27 20:16:09 by slombard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -5,7 +16,6 @@ void	load_player_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*player;
 
-	// player = mlx_load_png("./sprites/Player.png");
 	player = mlx_load_png(PLAYER_PATH);
 	if (!player)
 		exit_with_error("Error while loading png - player", false);

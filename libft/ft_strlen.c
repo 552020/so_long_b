@@ -3,34 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 20:46:31 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/12 21:22:37 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/11/30 16:13:05 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/21 18:12:31 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t	s;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	s = 0;
+	while (str[s] != '\0')
+		s++;
+	return (s);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	const char *s;
-	s = "12345";
- 
-	printf("ft_strlen result is : %lu \n", ft_strlen(s));
-	printf("strlen result is : %lu \n", strlen(s));
-}
-*/

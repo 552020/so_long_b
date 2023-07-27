@@ -3,64 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 18:37:31 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/02 21:44:43 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/21 17:34:43 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/21 17:38:07 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
-static int	ft_numlen(int n)
-{
-	int	i;
+static void	ft_write_n(char *str, unsigned int n, int len, int neg);
+static int	ft_length_int(int n);
 
-	i = 0;
-	if (n == 0)
-		i = 1;
-	if (n < 0)
-		i = 1;
-	while (n != 0)
-	{
-		i++;
-		n = n / 10 ;
-	}
-	return (i);
-}
-
-// Allocates (with malloc(3)) and returns a string
-// representing the integer received as an argument.
-// Negative numbers must be handled.
 char	*ft_itoa(int n)
 {
-	char	*ret;
-	int		numlen;
-	long	num;
+	int		len;
+	char	*str;
+	int		neg;
 
-	num = n;
-	numlen = ft_numlen(n);
-	ret = malloc(sizeof(char) * (numlen + 1));
-	if (!ret)
-		return (0);
-	if (n == 0)
-		ret[0] = '0';
-	ret[numlen] = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	neg = 0;
+	len = ft_length_int(n);
 	if (n < 0)
 	{
-		ret[0] = '-';
-		num = -num;
+		n *= -1;
+		neg = 1;
 	}
-	while (num != 0)
+	str = malloc (sizeof(char) * len + 1);
+	if (!str)
+		return (0);
+	if (n == 0)
 	{
-		ret[--numlen] = num % 10 + '0';
-		num = num / 10;
+		str[1] = '\0';
+		str[0] = '0';
 	}
-	return (ret);
+	if (n > 0)
+		ft_write_n(str, n, len, neg);
+	return (str);
 }
-/*
-int main(void)
+
+static int	ft_length_int(int n)
 {
-    printf("is : %s", ft_itoa(-1234));
+	int	len;
+
+	if (n == 0)
+		return (1);
+	len = 0;
+	if (n < 0)
+	{
+		n = -n;
+		len = 1;
+	}
+	while (n >= 1)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
-*/
+
+static void	ft_write_n(char *str, unsigned int n, int len, int neg)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (neg == 1)
+	{
+		str[0] = '-';
+		i++;
+	}
+	while (i < len)
+	{
+		str[len - j - 1] = (n % 10) + '0';
+		n = n / 10;
+		i++;
+		j++;
+	}
+	str[len] = '\0';
+}

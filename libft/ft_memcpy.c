@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 17:09:39 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/16 18:01:50 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/11/30 18:32:36 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/22 19:55:18 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,21 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	char		*ptr_d;
+	const char	*ptr_s;
+	size_t		i;
 
-	i = 0;
 	if (!dest && !src)
-		return (0);
-	while (n > i)
+		return (NULL);
+	ptr_d = dest;
+	ptr_s = src;
+	i = 0;
+	while (i < n)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		*ptr_d = *ptr_s;
+		ptr_s++;
+		ptr_d++;
 		i++;
 	}
 	return (dest);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char	*src;
-	char	*dest;
-
-	src = strdup("hello world");
-	dest = strdup("heyyy");
-	if (!ft_memcpy((void *)dest, (const void *)src, 3))
-	{
-		printf("An error occurred in ft_memcpy()\n");
-	}
-	else
-	{
-		printf("source is : %s\n dest is : %s\n", src, dest);
-	}
-}
-*/

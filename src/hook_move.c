@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook_move.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slombard <slombard@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/27 20:20:05 by slombard          #+#    #+#             */
+/*   Updated: 2023/07/27 20:32:01 by slombard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	move_hook(mlx_key_data_t keydata, void *tmp)
@@ -27,7 +39,6 @@ t_game	*move_up(t_game *game)
 			render_collected(game);
 			game->map_grid[game->player_y - 1][game->player_x] = '0';
 		}
-
 		move_up_core(game);
 	}
 	render_moves(game);
@@ -90,22 +101,4 @@ t_game	*move_left(t_game *game)
 	render_moves(game);
 	check_win(game);
 	return (game);
-}
-
-void	pick_collectibles(t_game *game, int y, int x)
-{
-	size_t	collectible_i;
-
-	collectible_i = 0;
-	x = x * PIXELS + 16;
-	y = y * PIXELS + 16;
-	while (collectible_i < game->img->collectible->count)
-	{
-		if (game->img->collectible->instances[collectible_i].x == x
-			&& game->img->collectible->instances[collectible_i].y == y)
-		{
-			game->img->collectible->instances[collectible_i].enabled = false;
-		}
-		collectible_i++;
-	}
 }

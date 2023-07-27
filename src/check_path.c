@@ -1,5 +1,16 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slombard <slombard@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/27 20:32:16 by slombard          #+#    #+#             */
+/*   Updated: 2023/07/27 20:33:19 by slombard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "so_long.h"
 
 void	check_path(t_game *game)
 {
@@ -21,8 +32,10 @@ void	check_path(t_game *game)
 		i++;
 	}
 	flood_fill(&tmp, tmp.player_y, tmp.player_x);
-	if (!(tmp.map_grid[game->exit_y][game->exit_x] == 'F' && tmp.collectibles == 0))
-		exit_with_error("Path error! The exit is not reachable by the player!", false);
+	if (!(tmp.map_grid[game->exit_y][game->exit_x] == 
+		'F' && tmp.collectibles == 0)) 
+		exit_with_error("Path error! \
+		The exit is not reachable by the player!", false);
 	free_grid(tmp.map_grid, tmp.height);
 }
 

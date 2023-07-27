@@ -3,40 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 16:29:44 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/02 21:08:18 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/22 21:05:52 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/22 21:06:52 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// Allocates (with malloc(3)) and returns a copy of
-// ’s1’ with the characters specified in ’set’ removed
-// from the beginning and the end of the string.
-static int	ft_isset(char c, const char *set)
+static int	ft_check(char const c, char const *set)
 {
-	while (*set)
-		if (c == *set++)
+	size_t	i;
+
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (set[i] == c)
 			return (1);
+		i++;
+	}
 	return (0);
 }
 
-char	*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*ret;
-	char	*start;
-	char	*end;
+	char	*res;
+	char	*index_start;
+	char	*index_end;
+	size_t	s1_len;
 
 	if (!s1 || !set)
-		return (0);
-	start = (char *)s1;
-	end = start + ft_strlen(s1);
-	while (*start && ft_isset(*start, set))
-		start++;
-	while (start < end && ft_isset(*(end - 1), set))
-		end--;
-	ret = ft_substr(start, 0, end - start);
-	return (ret);
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	index_start = (char *)s1;
+	index_end = index_start + s1_len - 1;
+	while (*index_start && ft_check(*index_start, set))
+		index_start++;
+	while (index_end > index_start && ft_check(*index_end, set))
+		index_end--;
+	res = malloc(index_end - index_start + 2);
+	if (!res)
+		return (NULL);
+	ft_strlcpy(res, index_start, index_end - index_start + 2);
+	return (res);
 }

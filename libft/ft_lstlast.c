@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_issign.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 17:34:53 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/06/16 17:34:59 by bsengeze         ###   ########.fr       */
+/*   Created: 2023/01/15 23:56:34 by slombard          #+#    #+#             */
+/*   Updated: 2023/01/16 00:06:59 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_issign(char c)
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	return (c == '+' || c == '-');
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

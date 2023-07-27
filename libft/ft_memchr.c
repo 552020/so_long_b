@@ -3,36 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/18 23:10:44 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/19 01:32:13 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/01 20:54:30 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/17 00:03:12 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t b)
 {
-	unsigned char	*cstr;
-	unsigned char	cc;
+	size_t				i;
+	const unsigned char	*ptr_s;
 
-	cstr = (unsigned char *)s;
-	cc = (unsigned char)c;
-	while (n > 0)
+	i = 0;
+	ptr_s = s;
+	while (i < b)
 	{
-		if (*cstr == cc)
-			return (cstr);
-		cstr++;
-		n--;
+		if (*ptr_s == (unsigned char) c)
+			return ((void *)ptr_s);
+		ptr_s++;
+		i++;
 	}
-	return (0);
+	return (NULL);
 }
-/*
-int main(void)
-{
-	printf("my funct result is : %p", ft_memchr("ABCD", 'A', 5));
-    printf("lib funct result is : %p", memchr("ABCD", 'A', 5));
-
-}
-*/

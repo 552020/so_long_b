@@ -3,39 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 19:58:28 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/02 21:11:35 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/18 15:30:34 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/21 17:25:57 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" 
 
-// Outputs the integer ’n’ to the given file
-// descriptor.
 void	ft_putnbr_fd(int n, int fd)
 {
+	int		i;
+
 	if (n == -2147483648)
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		ft_putstr_fd("-2", fd);
+		n = 147483648;
 	}
-	if (n == 0)
-	{
-		ft_putchar_fd('0', fd);
-		return ;
-	}
-	if (n < 0)
+	if (n < 0 && n != -2147483648)
 	{
 		ft_putchar_fd('-', fd);
-		n = -n;
+		n *= -1;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd (n / 10, fd);
+		i = n % 10;
+		ft_putchar_fd('0' + i, fd);
 	}
 	if (n < 10)
 	{
-		ft_putchar_fd(n + '0', fd);
-		return ;
+		i = n % 10;
+		ft_putchar_fd('0' + i, fd);
 	}
-	ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
 }
+/*
+int main(void)
+{
+	ft_putstr_fd("-2147483648", 1);
+	return (0);
+}
+*/

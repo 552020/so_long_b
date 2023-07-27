@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
 # include "MLX42.h"
 # include "libft.h"
+# include "get_next_line.h"
 # include <fcntl.h>
 # include <stdbool.h>
 
@@ -90,7 +90,6 @@ t_game	*init_game(char *map);
 t_game	*init_game_struct(char **map_grid);
 t_img	*init_img_struct(mlx_t *mlx);
 
-
 char	*read_map(char *map);
 size_t	count_y(char **map_grid);
 size_t	count_collectibles(t_game *game);
@@ -117,7 +116,6 @@ void	render_map(t_game *game);
 void	render_info(t_game *game);
 void	render_moves(t_game *game);
 void	render_collected(t_game *game);
-
 
 void	main_loop_hook(void *tmp);
 void	move_hook(mlx_key_data_t keydata, void *tmp);

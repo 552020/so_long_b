@@ -3,48 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 16:50:12 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/02 21:09:08 by bsengeze         ###   ########.fr       */
+/*   Created: 2023/01/15 17:46:41 by slombard          #+#    #+#             */
+/*   Updated: 2023/01/15 20:12:16 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_substrcnt(const char *s, char c)
+int	ft_free_ret(char **ret, size_t i);
+
+static size_t	ft_count_word(const char *s, char c)
 {
 	size_t	i;
+	size_t	words;
 
 	i = 0;
-	while (*s)
+	words = 0;
+	if (!s[0])
+		return (0);
+	while (s[i] && s[i] == c)
+		i++;
+	while (s[i] != '\0')
 	{
-		if (*s != c)
+		if (s[i] == c)
 		{
-			i++;
-			while (*s && *s != c)
-				s++;
+			words++;
+			while (s[i] && s[i] == c)
+				i++;
 		}
 		else
-			s++;
+			i++;
 	}
-	return (i);
+	if (s[i - 1] != c)
+		words++;
+	return (words);
 }
 
-// Allocates (with malloc(3)) and returns an array
-// of strings obtained by splitting ’s’ using the
-// character ’c’ as a delimiter. The array must end
-// with a NULL pointer.
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**ret;
-	size_t	i;
 	size_t	len;
+	size_t	i;
 
-	if (!s)
-		return (0);
 	i = 0;
-	ret = malloc(sizeof(char *) * (ft_substrcnt(s, c) + 1));
+	ret = (malloc(sizeof(char *) * (ft_count_word(s, c) + 1)));
 	if (!ret)
 		return (0);
 	while (*s)
@@ -53,8 +57,11 @@ char	**ft_split(char const *s, char c)
 		{
 			len = 0;
 			while (*s && *s != c && ++len)
-				s++;
-			ret[i++] = ft_substr(s - len, 0, len);
+				++s;
+			ret[i] = ft_substr(s - len, 0, len);
+			if (!ret[i] && ft_free_ret(ret, i))
+				return (0);
+			i++;
 		}
 		else
 			s++;
@@ -62,17 +69,11 @@ char	**ft_split(char const *s, char c)
 	ret[i] = 0;
 	return (ret);
 }
-/*
-int main(void)
+
+int	ft_free_ret(char **ret, size_t i)
 {
-	int i;
-	char **ret;
-
-	ret = ft_split("ABC,,A", ',');
-
-for(i = 0; i <= 100; i++)
-  {
-    printf("\n Element %d is: %s \n", i,ret[i]);
-  }
+	while (i--)
+		free(ret[i]);
+	free(ret);
+	return (1);
 }
-*/

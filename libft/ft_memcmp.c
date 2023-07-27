@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 00:18:07 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/19 00:38:55 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/02 00:26:09 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/16 20:02:42 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,19 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*cs1;
-	unsigned char	*cs2;
+	size_t			i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-	cs1 = (unsigned char *)s1;
-	cs2 = (unsigned char *)s2;
-	while (n > 0)
+	i = 0;
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		if (*cs1 != *cs2)
-			return (*cs1 - *cs2);
-		cs1++;
-		cs2++;
-		n--;
+		if (*(ptr1 + i) == *(ptr2 + i))
+			i++;
+		else
+			return (*(ptr1 + i) - *(ptr2 + i));
 	}
 	return (0);
 }
-/*
-int main(void)
-{
-	printf("my func result %d\n", ft_memcmp("ABCD","ABCd",6));
-    printf("lib func result %d", memcmp("ABCD","ABCd",6));
-}
-*/

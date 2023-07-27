@@ -3,31 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 20:03:59 by bsengeze          #+#    #+#             */
-/*   Updated: 2022/12/12 20:29:48 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/16 21:30:58 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/16 21:33:00 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
-		|| (c >= '0' && c <= '9'))
+	if ((c >= '0' && c <= '9')
+		|| (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	{
 		return (1);
+	}
 	return (0);
 }
-
-/*
-#include <ctype.h>
-#include <stdio.h>
-int main(void)
-{
-printf("ft_isalnum result is : %d \n", ft_isalnum(75));
-printf("isalnum result is : %d \n", isalnum(75));
-printf("ft_isalnum result is : %d \n", ft_isalnum(50));
-printf("isalnum result is : %d \n", isalnum(50));
-printf("ft_isalnum result is : %d \n", ft_isalnum(1));
-printf("isalnum result is : %d \n", isalnum(1));
-}
-*/

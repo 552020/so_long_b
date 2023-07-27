@@ -3,44 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsengeze <bsengeze@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: slombard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 19:21:55 by bsengeze          #+#    #+#             */
-/*   Updated: 2023/07/02 21:07:21 by bsengeze         ###   ########.fr       */
+/*   Created: 2022/12/06 16:32:15 by slombard          #+#    #+#             */
+/*   Updated: 2022/12/17 22:19:39 by slombard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// Allocates (with malloc(3)) and returns a substring
-// from the string ’s’.
-// The substring begins at index ’start’ and is of
-// maximum size ’len’.
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*p;
-	size_t	i;
+	char	*substr;
+	size_t	substr_len;
+	int		s_len;
 
-	i = 0;
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
-	p = malloc(sizeof(char) * len + 1);
-	if (!p)
-		return (0);
-	while (len > i)
+	s_len = ft_strlen((char *)s);
+	if (start >= ft_strlen((char *)s))
 	{
-		p[i] = s[start + i];
-		i++;
+		substr = malloc (sizeof(char));
+		if (!substr)
+			return (NULL);
+		*substr = '\0';
+		return (substr);
 	}
-	p[i] = 0;
-	return (p);
+	if (len <= s_len - start)
+		substr_len = len;
+	else
+		substr_len = s_len - start;
+	substr = malloc (sizeof(char) * substr_len + 1);
+	if (substr == NULL)
+		return (0);
+	ft_strlcpy(substr, &s[start], substr_len + 1);
+	return (&substr[0]);
 }
-/*
-int main(void)
-{
-
-printf("= %s",ft_substr("hola", 4294967295, 0));
-}
-*/

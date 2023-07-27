@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map_1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slombard <slombard@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/27 20:17:08 by slombard          #+#    #+#             */
+/*   Updated: 2023/07/27 20:19:21 by slombard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_file_extension(char *map_file)
@@ -21,13 +33,13 @@ void	check_map(char *map_str)
 void	check_if_map_is_empty(char *map)
 {
 	if (!*map)
-		exit_with_error("The map is a string, which is good. But the string is empty! No good. Load a valid map!", false);
+		exit_with_error("The map is a string, which is good. \
+		But the string is empty! No good. Load a valid map!", false);
 }
-
 
 void	check_for_empty_lines(char *map)
 {
-	char *map_tmp;
+	char	*map_tmp;
 
 	map_tmp = map;
 	if (*map_tmp == '\n')
@@ -58,15 +70,13 @@ void	check_map_shape(char *map)
 			line_len++;
 			i++;
 		}
-		if (map_width == 1)	
+		if (map_width == 1)
 			map_width = line_len;
 		else if (map_width != line_len)
-			exit_with_error("Invalid map! The map should be a rectangular! Or a square at least!", false);
+			exit_with_error("Invalid map! The map should be a rectangular! \
+			Or a square at least!", false);
 		line_len = 1;
 		if (map[i] == '\n')
 			i++;
 	}
 }
-
-
-
